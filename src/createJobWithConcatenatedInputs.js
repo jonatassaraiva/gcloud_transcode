@@ -14,6 +14,7 @@
  */
 
 'use strict';
+require('dotenv').config();
 
 function main(
   projectId,

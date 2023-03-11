@@ -14,6 +14,7 @@
  */
 
 'use strict';
+require('dotenv').config();
 
 function main(projectId, location, jobId) {
   // [START transcoder_delete_job]

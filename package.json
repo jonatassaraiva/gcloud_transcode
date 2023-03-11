@@ -1,22 +1,16 @@
 {
-  "name": "nodejs-video-transcoder-samples",
-  "private": true,
+  "name": "gcloud_transcode",
   "license": "Apache-2.0",
-  "author": "Google LLC",
   "engines": {
     "node": ">=12.0.0"
   },
-  "files": [
-    "*.js",
-    "!test"
-  ],
-  "scripts": {
-  },
+  "scripts": {},
   "dependencies": {
     "@google-cloud/video-transcoder": "^2.2.3"
   },
   "devDependencies": {
     "@google-cloud/storage": "^6.0.0",
+    "dotenv": "^16.0.3",
     "uuid": "^9.0.0"
   }
 }

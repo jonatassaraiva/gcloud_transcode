@@ -14,6 +14,7 @@
  */
 
 'use strict';
+require('dotenv').config();
 
 function main(projectId, location, inputUri, overlayImageUri, outputUri) {
   // [START transcoder_create_job_with_static_overlay]

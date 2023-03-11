@@ -15,6 +15,8 @@
 
 'use strict';
 
+
+
 function main(projectId, location, inputUri, outputUri) {
   // [START transcoder_create_job_from_ad_hoc]
   /**

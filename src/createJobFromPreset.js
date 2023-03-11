@@ -14,6 +14,7 @@
  */
 
 'use strict';
+require('dotenv').config();
 
 function main(projectId, location, inputUri, outputUri, preset) {
   // [START transcoder_create_job_from_preset]

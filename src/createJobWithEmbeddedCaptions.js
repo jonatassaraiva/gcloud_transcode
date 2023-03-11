@@ -14,6 +14,7 @@
  */
 
 'use strict';
+require('dotenv').config();
 
 function main(projectId, location, inputVideoUri, inputCaptionsUri, outputUri) {
   // [START transcoder_create_job_with_embedded_captions]
