@@ -45,15 +45,26 @@ function main(projectId, location, templateId) {
               key: 'video-stream0',
               videoStream: {
                 h264: {
-                  heightPixels: 360,
-                  widthPixels: 640,
-                  bitrateBps: 550000,
+                  heightPixels: 240,
+                  widthPixels: 426,
+                  bitrateBps: 50000,
                   frameRate: 60,
                 },
               },
             },
             {
               key: 'video-stream1',
+              videoStream: {
+                h264: {
+                  heightPixels: 360,
+                  widthPixels: 640,
+                  bitrateBps: 500000,
+                  frameRate: 60,
+                },
+              },
+            },
+            {
+              key: 'video-stream2',
               videoStream: {
                 h264: {
                   heightPixels: 720,
@@ -73,14 +84,19 @@ function main(projectId, location, templateId) {
           ],
           muxStreams: [
             {
-              key: 'sd',
+              key: '240',
               container: 'mp4',
               elementaryStreams: ['video-stream0', 'audio-stream0'],
             },
             {
-              key: 'hd',
+              key: '320',
               container: 'mp4',
               elementaryStreams: ['video-stream1', 'audio-stream0'],
+            },
+            {
+              key: '720',
+              container: 'mp4',
+              elementaryStreams: ['video-stream2', 'audio-stream0'],
             },
           ],
         },

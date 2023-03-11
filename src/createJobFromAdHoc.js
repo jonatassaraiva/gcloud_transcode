@@ -44,45 +44,151 @@ function main(projectId, location, inputUri, outputUri) {
         config: {
           elementaryStreams: [
             {
-              key: 'video-stream0',
+              key: 'video-stream-240p',
+              videoStream: {
+                h264: {
+                  heightPixels: 240,
+                  widthPixels: 426,
+                  bitrateBps: 300000,
+                  frameRate: 30,
+                },
+              },
+            },
+            {
+              key: 'video-stream-360p',
               videoStream: {
                 h264: {
                   heightPixels: 360,
                   widthPixels: 640,
-                  bitrateBps: 550000,
+                  bitrateBps: 400000,
                   frameRate: 60,
                 },
               },
             },
             {
-              key: 'video-stream1',
+              key: 'video-stream-540p',
+              videoStream: {
+                h264: {
+                  heightPixels: 540,
+                  widthPixels: 960,
+                  bitrateBps: 700000,
+                  frameRate: 60,
+                },
+              },
+            },
+            {
+              key: 'video-stream-720p',
               videoStream: {
                 h264: {
                   heightPixels: 720,
                   widthPixels: 1280,
-                  bitrateBps: 2500000,
+                  bitrateBps: 1200000,
                   frameRate: 60,
                 },
               },
             },
             {
-              key: 'audio-stream0',
+              key: 'audio-stream-acc-64',
               audioStream: {
                 codec: 'aac',
                 bitrateBps: 64000,
               },
             },
+            {
+              key: 'audio-stream-acc-96',
+              audioStream: {
+                codec: 'aac',
+                bitrateBps: 96000,
+              },
+            },
           ],
           muxStreams: [
+            // OUT HLS
             {
-              key: 'sd',
-              container: 'mp4',
-              elementaryStreams: ['video-stream0', 'audio-stream0'],
+              key: 'hls-240p',
+              container: 'ts',
+              elementaryStreams: ['video-stream-240p', 'audio-stream-acc-64'],
             },
             {
-              key: 'hd',
+              key: 'hls-360p',
+              container: 'ts',
+              elementaryStreams: ['video-stream-360p', 'audio-stream-acc-64'],
+            },
+            {
+              key: 'hls-540p',
+              container: 'ts',
+              elementaryStreams: ['video-stream-540p', 'audio-stream-acc-96'],
+            },
+            {
+              key: 'hls-720p',
+              container: 'ts',
+              elementaryStreams: ['video-stream-720p', 'audio-stream-acc-96'],
+            },
+
+            // OUT DASH
+            {
+              key: 'dash-240p',
+              container: 'fmp4',
+              elementaryStreams: ['video-stream-240p'],
+            },
+            {
+              key: 'dash-360p',
+              container: 'fmp4',
+              elementaryStreams: ['video-stream-360p'],
+            },
+            {
+              key: 'dash-540p',
+              container: 'fmp4',
+              elementaryStreams: ['video-stream-540p'],
+            },
+            {
+              key: 'dash-720p',
+              container: 'fmp4',
+              elementaryStreams: ['video-stream-720p'],
+            },
+            {
+              key: 'dash-audio-64',
+              container: 'fmp4',
+              elementaryStreams: ['audio-stream-acc-64'],
+            },
+            {
+              key: 'dash-audio-96',
+              container: 'fmp4',
+              elementaryStreams: ['audio-stream-acc-96'],
+            },
+
+            // OUT MP4
+            {
+              key: 'video-320',
               container: 'mp4',
-              elementaryStreams: ['video-stream1', 'audio-stream0'],
+              elementaryStreams: ['video-stream-360p'],
+            },
+            {
+              key: 'video-540',
+              container: 'mp4',
+              elementaryStreams: ['video-stream-540p'],
+            },
+            {
+              key: 'video-720',
+              container: 'mp4',
+              elementaryStreams: ['video-stream-720p'],
+            },
+            {
+              key: 'audio',
+              container: 'mp4',
+              elementaryStreams: ['audio-stream-acc-96'],
+            }
+          ],
+          manifests: [
+            {
+              fileName: 'manifest.m3u8',
+              type: 'HLS',
+              muxStreams: ['hls-240p', 'hls-360p', 'hls-540p', 'hls-720p'],
+            },
+            {
+              fileName: 'manifest.mpd',
+              type: 'DASH',
+              muxStreams: ['dash-240p', 'dash-360p', 'dash-540p', 'dash-720p', 'dash-audio-64', 'dash-audio-96'],
             },
           ],
         },
