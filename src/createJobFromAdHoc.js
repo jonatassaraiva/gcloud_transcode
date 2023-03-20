@@ -191,6 +191,22 @@ function main(projectId, location, inputUri, outputUri) {
               muxStreams: ['dash-240p', 'dash-360p', 'dash-540p', 'dash-720p', 'dash-audio-64', 'dash-audio-96'],
             },
           ],
+          spriteSheets: [
+            {
+              filePrefix: 'sprite-sheet-player',
+              spriteHeightPixels: 94,
+              spriteWidthPixels: 160,
+              interval: {
+                seconds: 7,
+              },
+            },
+            {
+              filePrefix: 'sprite-sheet-cover',
+              spriteHeightPixels: 540,
+              spriteWidthPixels: 960,
+              totalCount: 10,
+            },
+          ],
         },
       },
     };
